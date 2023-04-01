@@ -5,10 +5,7 @@ import androidx.room.Room
 import com.duv.mvvmnotesapp.feature_notes.data.data_source.NoteDatabase
 import com.duv.mvvmnotesapp.feature_notes.data.repository.NoteRepositoryImpl
 import com.duv.mvvmnotesapp.feature_notes.domain.repository.NoteRepository
-import com.duv.mvvmnotesapp.feature_notes.domain.use_cases.AddNoteUC
-import com.duv.mvvmnotesapp.feature_notes.domain.use_cases.DeleteNoteUC
-import com.duv.mvvmnotesapp.feature_notes.domain.use_cases.GetNotesUC
-import com.duv.mvvmnotesapp.feature_notes.domain.use_cases.NoteUsecases
+import com.duv.mvvmnotesapp.feature_notes.domain.use_cases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,7 +38,8 @@ object AppModule {
         return NoteUsecases(
             getNotes = GetNotesUC(repository),
             deleteNote = DeleteNoteUC(repository),
-            addNote = AddNoteUC(repository)
+            addNote = AddNoteUC(repository),
+            getNote = GetNoteUC(repository)
         )
     }
 }
